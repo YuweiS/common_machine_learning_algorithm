@@ -25,3 +25,17 @@ The program should be callable from the command line. It should be named dt-lear
 ```
 dt-learn <train-set-file> <test-set-file> m
 ```
+## Naive Bayes & TAN
+For the TAN algorithm:
+*   Use Prims's algorithm to find a maximal spanning tree (but choose maximal weight edges instead of minimal weight ones).
+*   Initialize this process by choosing the first attribute in the input file for Vnew.
+*   If there are ties in selecting maximum weight edges, use the following preference criteria:
+    1.   Prefer edges emanating from attributes listed earlier in the input file.
+    2.   If there are multiple maximal weight edges emanating from the first such attribute, prefer edges going to attributes listed earlier in the input file.
+*   To root the maximal weight spanning tree, pick the first attribute in the input file as the root.
+
+The program should be called bayes and should accept four command-line arguments as follows:
+```
+bayes <train-set-file> <test-set-file> <n|t>
+```
+where the last argument is a single character (either 'n' or 't') that indicates whether to use naive Bayes or TAN.
