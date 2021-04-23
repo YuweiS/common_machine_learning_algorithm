@@ -39,3 +39,27 @@ The program should be called bayes and should accept four command-line arguments
 bayes <train-set-file> <test-set-file> <n|t>
 ```
 where the last argument is a single character (either 'n' or 't') that indicates whether to use naive Bayes or TAN.
+
+## Logistic Regression
+Logistic regression using a neural network and stochastic gradient descent. Logistic regression is a powerful generalized linear model that is used quite often in practice. The program should be callable from the command line, through a bash script. The bash script should be named logistic and should accept two command-line arguments as follows:
+```
+logistic l e <train-set-file> <test-set-file>
+```
+where l specifies the learning rate, and e specifies the number of training epochs. After training for e epochs on the training set, then use the learned neural net to predict a classification for every instance in the test set.
+
+Here are the implementation details:
+*   The network is intended for binary classification problems, and therefore it has one output unit with a sigmoid function. The sigmoid should be trained to predict 0 for the first class listed in the given ARFF files, and 1 for the second class.
+*   Stochasic gradient descent is used to minimize cross-entropy error.
+*   For each numeric feature, use one input unit. For each discrete feature, use a one-of-k encoding. (Optionally, use a thermometer encoding for discrete numeric features. There are several in the lymph data set referenced below).
+*   To ensure that hidden unit activations don't get saturated, standardize numeric features as described in this document.
+*   Each epoch is one complete pass through the training instances. randomize the order of the training instances before starting training, but each epoch can go through the instances in the same order.
+*   All weights and bias parameters are initialized to random values in [-0.01, 0.01].
+
+## Neural Network
+This program implements a neural network with a single, fully connected hidden layer, that uses cross-entropy as the loss function. The bash script should be named nnet and should accept three command-line arguments as follows:
+```
+nnet l h e <train-set-file> <test-set-file>
+```
+where l specifies the learning rate, h specifies the number of hidden units, and e specifies the number of training epochs.
+
+
